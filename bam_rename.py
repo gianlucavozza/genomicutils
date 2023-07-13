@@ -1,3 +1,7 @@
+'''
+Author: Gianluca Vozza
+v.0.1
+'''
 import os
 import argparse
 import subprocess
