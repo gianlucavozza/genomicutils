@@ -19,8 +19,24 @@ parser.add_argument(
     default=None,
     required=True,
     help="Path to the bam folder"
-)
+),
+parser.add_argument(
+    "-s",
+    "--singularity",
+    type=str,
+    default=None,
+    required=True,
+    help="Path to the singularity image of samtools"
+),
 
+parser.add_argument(
+    "-b",
+    "--bind",
+    type=str,
+    default=None,
+    required=True,
+    help="Path to the folder to bind"
+),
 args = parser.parse_args()
 
 # Specify the path to your BAM file
@@ -28,10 +44,10 @@ folder = args.path + '/bam/'
 file_list = os.listdir(folder)
 
 # Path to the Samtools Singularity image
-singularity_image = "" 
+singularity_image = args.singularity 
 
 # Folder to bind inside the Singularity container
-bind_folder = ""
+bind_folder = args.bind
 
 for filename in file_list:
     if filename.endswith('.bam'):
