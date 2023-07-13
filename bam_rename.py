@@ -34,7 +34,7 @@ parser.add_argument(
     "--bind",
     type=str,
     default=None,
-    required=True,
+    required=False,
     help="Path to the folder to bind"
 ),
 args = parser.parse_args()
@@ -47,7 +47,10 @@ file_list = os.listdir(folder)
 singularity_image = args.singularity 
 
 # Folder to bind inside the Singularity container
-bind_folder = args.bind
+if args.bind == None:
+    bind_folder = args.path
+else:
+    bind_folder = args.bind
 
 for filename in file_list:
     if filename.endswith('.bam'):
